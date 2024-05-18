@@ -20,6 +20,7 @@
 
         .container-form {
             text-align: center;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 16px rgba(0, 0, 0, .25);
         }
@@ -57,6 +58,12 @@
             border: none;
         }
 
+        #wrong {
+            color: red;
+            font-style: italic;
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -73,20 +80,27 @@
             </form>
             <p>Belum memiliki akun? Buat <a href="register.html">disini</a></p>
         </div>
+        <p id="wrong">Username Tidak ditemukan, pastikan anda mengisi dengan benar!</p>
     </div>
 
     <script type="text/javascript">
         const userInput = document.getElementById("getInput")
         const password = document.getElementById("password")
+        const wrong = document.getElementById("wrong")
 
         const onLog = () => {
             if (userInput.value == localStorage.getItem("Email") || userInput.value == localStorage.getItem("Telepon") && password.value == localStorage.getItem("Password")) {
                 alert("Berhasil Masuk")
                 location.href = "index.html"
             } else {
-                alert("salah")
+                wrong.style.display = "block"
+                setInterval(() => {
+                    wrong.style.display = "none"
+                }, 2000)
+                setTimeout(() => {
+                    location.reload()
+                }, 2000)
             }
-
         }
 
     </script>

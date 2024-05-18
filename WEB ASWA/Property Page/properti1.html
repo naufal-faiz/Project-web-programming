@@ -14,19 +14,19 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="font-family: 'Kanit', sans-serif; background-color: #F8F7F4;">
     <header class="bg-navbar1">
         <div class="d-flex justify-content-between align-items-center" style="text-align: center;">
-            <div class="m-3">
+            <div class="m-3" id="backButton">
                 <img src="../img/arrow-left.svg" alt="" id="back">
             </div>
-            <h2>Produk Kami</h2>
+            <h2>Temukan Pilihan Anda</h2>
             <div></div>
         </div>
     </header>
 
     <main class="d-flex justify-content-center">
-        <div style="width: 800px" class="border-khusus">
+        <div style="width: 800px" class="">
             <div class="d-flex align-items-center mt-3 flex-column gap-2">
                 <img src="../img/Gambar1.png" class="img-fluid border-khusus rounded-2" alt="..." width="800">
                 <div class="d-flex gap-2">
@@ -36,27 +36,30 @@
             </div>
 
             <div class="title mt-4">
-                <h2>Perumahan 1</h2>
+                <h2 class="text-coklat">Family Suites</h2>
             </div>
-            <div>
-                <h5>Rp Sekian Juta</h5>
+            <div class="mb-3">
+                <h5 class="text-krem">Rp. 800,000,000</h5>
             </div>
-            <div>
-                <p class="fw-medium">Lokasi sekian</p>
+            <div class="d-flex gap-3">
+                <img src="../img/location.svg" alt="" width="20" height="20">
+                <p class="fw-medium">Jl. Pertamina Raya Kedaung, Kedung Pengawas</p>
             </div>
             <div class="d-flex">
-                <div class="d-flex align-items-center m-3 justify-content-center rounded-4"
-                    style="box-shadow: 0 0 16px rgba(0,0,0,.25) inset; width: 300px; height: 120px">
-                    fasilitas1
+                <div class="d-flex flex-column align-items-center m-3 justify-content-center rounded-4"
+                    style="box-shadow: 0 0 10px rgba(0,0,0,.25) inset; width: 300px; height: 120px; font-size: 1.2rem;">
+                    <p class="text-coklat fw-medium m-0">Kamar Tidur</p>
+                    <p class="text-coklat fw-medium m-0">3</p>
                 </div>
-                <div class="d-flex align-items-center m-3 justify-content-center rounded-4"
-                    style="box-shadow: 0 0 16px rgba(0,0,0,.25) inset; width: 300px; height: 120px">
-                    fasilitas1
+                <div class="d-flex flex-column align-items-center m-3 justify-content-center rounded-4"
+                    style="box-shadow: 0 0 10px rgba(0,0,0,.25) inset; width: 300px; height: 120px; font-size: 1.2rem;">
+                    <p class="text-coklat fw-medium m-0">Kamar Mandi</p>
+                    <p class="text-coklat fw-medium m-0">1</p>
                 </div>
             </div>
 
             <div class="keterangan mt-4 d-flex flex-column gap-2">
-                <h5>Keterangan</h5>
+                <h5 class="text-coklat">Keterangan</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At architecto praesentium alias aspernatur
                     quo ex ad cumque voluptate, fuga sunt, aliquam quos provident odit similique quae ut. Vero,
                     praesentium eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nulla maiores ex
@@ -70,9 +73,22 @@
                     Cupiditate reprehenderit aspernatur numquam nulla minus ullam voluptatum veritatis. Vero libero sunt
                     distinctio facere placeat numquam perspiciatis doloribus accusamus alias.</p>
             </div>
+            <button class="d-flex gap-2 justify-content-center align-items-center rounded-5 btn btn-khusus p-2 fw-medium" style="width: 100%; margin: 20px 0;">
+                <img src="../img/whatsapp copy.svg" alt="" width="25"">
+                Hubungi Admin
+            </button>
             <!-- Pembatas Main -->
         </div>
     </main>
+
+    <script>
+        const backButton = document.getElementById("backButton");
+
+        backButton.addEventListener('click', () => {
+            window.history.back()
+        })
+    </script>
+
 </body>
 
 </html>

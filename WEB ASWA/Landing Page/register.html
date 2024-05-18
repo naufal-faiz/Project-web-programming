@@ -16,11 +16,12 @@
             align-items: center;
             height: 100vh;
         }
-
+        
         .container-form {
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 0 16px rgba(0,0,0,.25);
+            padding: 15px;
         }
 
         h1 {
@@ -55,6 +56,12 @@
             color: white;
             border: none;
         }
+
+        .wrong p {
+            color: red;
+            display: none;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -72,6 +79,9 @@
             </form>
             <p>Sudah memiliki akun? Masuk <a href="login.html">disini</a></p>
         </div>
+        <div class="wrong">
+            <p id="wrong">Pastikan anda mengisi data dengan benar!</p>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -80,6 +90,7 @@
             const email = document.getElementById("email")
             const number = document.getElementById("number")
             const password = document.getElementById("password")
+            const wrong = document.getElementById("wrong")
 
             localStorage.setItem("Username", username.value)
             localStorage.setItem("Email", email.value)
@@ -87,10 +98,17 @@
             localStorage.setItem("Password", password.value)
 
             if(username.value == "" || email.value == "" || number.value == "" || password.value == "") {
+                wrong.style.display = "block"
+                setInterval(() => {
+                    wrong.style.display = "none"
+                }, 2000);
                 localStorage.removeItem("Username")
                 localStorage.removeItem("Email")
                 localStorage.removeItem("Telepon")
                 localStorage.removeItem("Password")
+                setTimeout (() => {
+                    location.reload()
+                }, 2000)
             } else {
                 alert("Akun berhasil dibuat")
                 location.href = "login.html"

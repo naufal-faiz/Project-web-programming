@@ -125,6 +125,19 @@
     --bs-form-invalid-border-color: #dc3545
 }
 
+.logout-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EBE3D5;
+    padding: 8px;
+}
+
+.logout-c p {
+    margin: 0;
+    padding: 0;
+}
+
 [data-bs-theme=dark] {
     color-scheme: dark;
     --bs-body-color: #dee2e6;
