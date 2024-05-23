@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,11 @@
             align-items: center;
             height: 100vh;
         }
-        
+
         .container-form {
             text-align: center;
             border-radius: 10px;
-            box-shadow: 0 0 16px rgba(0,0,0,.25);
+            box-shadow: 0 0 16px rgba(0, 0, 0, .25);
             padding: 15px;
         }
 
@@ -64,7 +65,11 @@
         }
     </style>
 </head>
+
 <body>
+    <div class="m-3" id="backButton">
+        <img src="../img/arrow-left.svg" alt="" id="back">
+    </div>
     <div class="container">
         <div class="container-form">
             <h1>REGISTER</h1>
@@ -97,7 +102,7 @@
             localStorage.setItem("Telepon", number.value)
             localStorage.setItem("Password", password.value)
 
-            if(username.value == "" || email.value == "" || number.value == "" || password.value == "") {
+            if (username.value == "" || email.value == "" || number.value == "" || password.value == "") {
                 wrong.style.display = "block"
                 setInterval(() => {
                     wrong.style.display = "none"
@@ -106,7 +111,7 @@
                 localStorage.removeItem("Email")
                 localStorage.removeItem("Telepon")
                 localStorage.removeItem("Password")
-                setTimeout (() => {
+                setTimeout(() => {
                     location.reload()
                 }, 2000)
             } else {
@@ -114,6 +119,13 @@
                 location.href = "login.html"
             }
         }
+
+        const backButton = document.getElementById("backButton");
+
+        backButton.addEventListener('click', () => {
+            window.history.back()
+        })
     </script>
 </body>
+
 </html>

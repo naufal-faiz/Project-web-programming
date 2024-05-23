@@ -63,11 +63,13 @@
             font-style: italic;
             display: none;
         }
-
     </style>
 </head>
 
 <body>
+    <div class="m-3" id="backButton">
+        <img src="../img/arrow-left.svg" alt="" id="back">
+    </div>
     <div class="container">
         <div class="container-form">
             <h1>LOGIN</h1>
@@ -104,6 +106,12 @@
                 }, 2500)
             }
         }
+
+        const backButton = document.getElementById("backButton");
+
+        backButton.addEventListener('click', () => {
+            window.history.back()
+        })
 
     </script>
 </body>
