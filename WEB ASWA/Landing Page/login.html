@@ -100,7 +100,7 @@
         const onLog = () => {
             if (userInput.value == localStorage.getItem("Email") || userInput.value == localStorage.getItem("Telepon") && password.value == localStorage.getItem("Password")) {
                 alert("Berhasil Masuk")
-                location.href = "index.html"
+                location.href = "index.php"
             } else {
                 setInterval(() => {
                     wrong.style.display = "block"

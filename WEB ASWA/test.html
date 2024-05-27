@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <select name="country" id="country">
+            <option value="+62">IDN +62</option>
+            <option value="+61">AUS +61</option>
+            <option value="+60">MYS +60</option>
+            <option value="+65">SGP +65</option>
+            <option value="+84">VNM +84</option>
+        </select>
+        <input type="text" name="telepon" id="telepon" maxlength="12">
+        <button type="button" onclick="test()">test</button>
+    </form>
+</body>
+<script>
+    const country = document.getElementById("country");
+    const telepon = document.getElementById("telepon");
+
+    const test = () => {
+        let number = country.value + telepon.value
+        telepon.value = number
+        console.log(telepon.value)
+    }
+</script>
+
+</html>
