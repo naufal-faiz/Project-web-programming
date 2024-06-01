@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar</title>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container-form {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 16px rgba(0, 0, 0, .25);
+        }
+
+        h1 {
+            color: #776B5D;
+        }
+
+        input {
+            border: 2px solid #776B5D;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        ::placeholder {
+            color: #776B5D;
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding-right: 40px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 10px;
+            background-color: #776B5D;
+            color: white;
+            border: 2px solid #776B5D;
+        }
+
+        button:hover {
+            background-color: white;
+            color: #776B5D;
+            border: 2px solid #776B5D;
+            transition: .2s ease-in-out;
+        }
+
+        #wrong {
+            color: red;
+            font-style: italic;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m-3" id="backButton">
+        <img src="../img/arrow-left.svg" alt="" id="back">
+    </div>
+    <div class="container">
+        <div class="container-form">
+            <h1>LOGIN</h1>
+            <form>
+                <ul>
+                    <li><input type="text" placeholder="Email atau Telepon" id="getInput"></li>
+                    <li><input type="password" placeholder="Password" id="password"></li>
+                </ul>
+                <button onclick="onLog()" type="button">Masuk</button>
+            </form>
+            <p>Belum memiliki akun? Buat <a href="register.html">disini</a></p>
+        </div>
+        <p id="wrong">Username Tidak ditemukan, pastikan anda mengisi dengan benar!</p>
+    </div>
+
+    <script type="text/javascript">
+        const userInput = document.getElementById("getInput")
+        const password = document.getElementById("password")
+        const wrong = document.getElementById("wrong")
+
+        const onLog = () => {
+            if (userInput.value == localStorage.getItem("Email") || userInput.value == localStorage.getItem("Telepon") && password.value == localStorage.getItem("Password")) {
+                alert("Berhasil Masuk")
+                location.href = "index.php"
+            } else {
+                setInterval(() => {
+                    wrong.style.display = "block"
+                }, 500)
+                setInterval(() => {
+                    wrong.style.display = "none"
+                }, 2500)
+                setTimeout(() => {
+                    location.reload()
+                }, 2500)
+            }
+        }
+
+        const backButton = document.getElementById("backButton");
+
+        backButton.addEventListener('click', () => {
+            window.history.back()
+        })
+
+    </script>
+</body>
+
+</html>
