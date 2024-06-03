@@ -68,19 +68,23 @@ $productCount = count($products);
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
-                                
+
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-hover" aria-current="page" href="../Product Page/halamanUtama.php">Dijual</a>
+                                <a class="nav-link text-white nav-hover" aria-current="page"
+                                    href="../Product Page/halamanUtama.php">Dijual</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-hover" aria-current="page" href="../Product Page/subsidi.php">Subsidi</a>
+                                <a class="nav-link text-white nav-hover" aria-current="page"
+                                    href="../Product Page/subsidi.php">Subsidi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-hover" aria-current="page" href="../Product Page/cluster.php">Cluster</a>
+                                <a class="nav-link text-white nav-hover" aria-current="page"
+                                    href="../Product Page/cluster.php">Cluster</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-hover" aria-current="page" href="../Product Page/takeOver.php">Take Over</a>
+                                <a class="nav-link text-white nav-hover" aria-current="page"
+                                    href="../Product Page/takeOver.php">Take Over</a>
                             </li>
                         </ul>
                     </div>
@@ -110,8 +114,10 @@ $productCount = count($products);
         <div class="d-flex justify-content-center flex-column align-items-center pt-5">
             <h1 class="text-coklat" id="adminTitle">Hai Admin, Selamat Datang!</h1>
             <div class="d-flex gap-3 mt-3">
-                <a class="btn btn-khusus" aria-current="page" id="adminLeads" href="../adminLeads/createAdminLeads.php">Buat iklan</a>
-                <a class="btn btn-login" aria-current="page" id="adminPage" href="../adminLeads/adminLeadsPage.php">Lihat halaman iklan</a>
+                <a class="btn btn-khusus" aria-current="page" id="adminLeads"
+                    href="../adminLeads/createAdminLeads.php">Buat iklan</a>
+                <a class="btn btn-login" aria-current="page" id="adminPage"
+                    href="../adminLeads/adminLeadsPage.php">Lihat halaman iklan</a>
             </div>
         </div>
         <!-- CAROUSEL START -->
@@ -128,15 +134,15 @@ $productCount = count($products);
                 </div>
                 <div class="carousel-inner rounded-5">
                     <div class="carousel-item active">
-                        <img src="../img/uploadan/Gambar1.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="../img/Gambar1.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
                     <div class="carousel-item">
-                        <img src="../img/uploadan/Gambar2.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="../img/Gambar6.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
                     <div class="carousel-item">
-                        <img src="../img/uploadan/Gambar3.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="../img/Gambar7.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
                 </div>
@@ -154,119 +160,125 @@ $productCount = count($products);
         </div>
         <!-- CAROUSEL END -->
 
-        <?php if(empty($products)) : ?>
-        <?php else : ?>
-        <!-- CARD START -->
-        <div class="d-flex justify-content-center m-3 mt-4">
-            <h1 class="text-coklat">Penawaran Terbaik Kami</h1>
-        </div>
-        <?php if($productCount > 3) : ?>
-        <div class="d-flex gap-3 text-center overflow-x-auto justify-content-start">
-        <?php else : ?>
-        <div class="d-flex gap-3 text-center overflow-x-auto justify-content-center">
-        <?php endif ?>
-            <?php foreach ($products as $product): ?>
-                <?php $harga = number_format($product["harga"], 0, ',') ?>
-                <div class="card p-1 shadow-sm border border-none" id="isi-kartu" style="width: 18rem; min-width: 18rem;">
-                    <img src="../img/uploadan/<?= $product["gambar"] ?>" class="card-img-top"
-                        style="height: 10rem; border: 1px solid #776B5D;" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-coklat fw-bold"><?= $product["judul"] ?></h5>
-                        <p class="card-text m-0 fw-medium text-krem">Rp. <?= $harga ?></p>
-                        <p class="card-text m-0"><?= $product["lokasi"] ?></p>
-                    </div>
-                    <div class="mb-3">
-                        <a href="../Property Page/halamanProperti.php?id_properti=<?= $product["id_properti"] ?>" class="btn btn-khusus">Lihat
-                            Disini</a>
-                    </div>
-                </div>
-            <?php endforeach ?>
-        </div>
-        <!-- CARD END -->
-        <?php endif ?>
-
-        <!-- SPONSOR -->
-        <div class="d-flex justify-content-center m-3 mt-5 title">
-            <h1 class="text-coklat">Properti Yang Kami Jangkau</h1>
-        </div>
-
-        <div class="d-flex justify-content-center overflow-x-auto" style="gap: 140px">
-            <img src="../img/JID2021005924.jpg" alt="" class="rounded-circle shadow-sm" width="75
-            ">
-            <img src="../img/Suropati-logo.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-            <img src="../img/Gambar9.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-            <img src="../img/images.jpg" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-            <img src="../img/Gambar10.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-            <img src="../img/Gambar8.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-        </div>
-        <!-- SPONSOR END -->
-
-        <!-- LEADS START -->
-        <div class="container d-flex justify-content-center mt-5">
-            <div class="leads-container shadow-sm w-100 mx-5 d-flex flex-row p-3 flex-wrap bg-white rounded-3 gap-3">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="../img/icon 1.png" class="" width="200" alt="...">
-                </div>
-                <div class="leads-text d-flex flex-column gap-3 justify-content-center">
-                    <h3 class="text-coklat fw-bold">Ingin menjual atau menyewakan properti anda?</h3>
-                    <h5 class="text-krem fw-bold">Tayangkan iklan hanya dengan beberapa langkah</h5>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="../userLeads/createLeads.php" class="btn btn-khusus" style="width: 180px;">Pasang iklan disini!</a>
-                        <a href="../userLeads/leadsPage.php" class="btn btn-login" style="width: 180px;">Lihat Iklan saya</a>
-                    </div>
-                </div>
-
+        <?php if (empty($products)): ?>
+        <?php else: ?>
+            <!-- CARD START -->
+            <div class="d-flex justify-content-center m-3 mt-4">
+                <h1 class="text-coklat">Penawaran Terbaik Kami</h1>
             </div>
-        </div>
-
-        <!-- RATING USER START -->
-        <div class="d-flex justify-content-center mb-3 mt-5 title">
-            <h1 class="text-coklat">Ulasan</h1>
-        </div>
-
-        <div class="d-flex justify-content-center mx-5 mb-5">
-            <div class="d-flex justify-content-center flex-wrap gap-5">
-                <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
-                    <div class="p-3 text-center" style="height: 75%;">
-                        <q>Dengan adanya website aswa memudahkan saya untuk mencari tempat tinggal di daerah
-                            sekitar yang ingin saya tempati.</q>
-                    </div>
-                    <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
-                        style="background-color: #ebe3d5;">
-                        <img src="../img/icon3.png" width="50" alt="">
-                        <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
-                    </div>
+            <?php if ($productCount > 3): ?>
+                <div class="d-flex gap-3 text-center overflow-x-auto justify-content-start">
+                <?php else: ?>
+                    <div class="d-flex gap-3 text-center overflow-x-auto justify-content-center">
+                    <?php endif ?>
+                    <?php foreach ($products as $product): ?>
+                        <?php $harga = number_format($product["harga"], 0, ',') ?>
+                        <div class="card p-1 shadow-sm border border-none" id="isi-kartu"
+                            style="width: 18rem; min-width: 18rem;">
+                            <img src="../img/uploadan/<?= $product["gambar"] ?>" class="card-img-top"
+                                style="height: 10rem; border: 1px solid #776B5D;" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-coklat fw-bold"><?= $product["judul"] ?></h5>
+                                <p class="card-text m-0 fw-medium text-krem">Rp. <?= $harga ?></p>
+                                <p class="card-text m-0"><?= $product["lokasi"] ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <a href="../Property Page/halamanProperti.php?id_properti=<?= $product["id_properti"] ?>"
+                                    class="btn btn-khusus">Lihat
+                                    Disini</a>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                 </div>
-                <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
-                    <div class="p-3 text-center" style="height: 75%;">
-                        <q>Terimakasih aswa karena sudah memudahkan saya untuk mencari properti terbaik.</q>
+                <!-- CARD END -->
+            <?php endif ?>
+
+            <!-- SPONSOR -->
+            <div class="d-flex justify-content-center m-3 mt-5 title">
+                <h1 class="text-coklat">Properti Yang Kami Jangkau</h1>
+            </div>
+
+            <div class="d-flex justify-content-center overflow-x-auto" style="gap: 140px">
+                <img src="../img/JID2021005924.jpg" alt="" class="rounded-circle shadow-sm" width="75
+            ">
+                <img src="../img/Suropati-logo.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+                <img src="../img/Gambar9.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+                <img src="../img/images.jpg" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+                <img src="../img/Gambar10.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+                <img src="../img/Gambar8.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+            </div>
+            <!-- SPONSOR END -->
+
+            <!-- LEADS START -->
+            <div class="container d-flex justify-content-center mt-5">
+                <div
+                    class="leads-container shadow-sm w-100 mx-5 d-flex flex-row p-3 flex-wrap bg-white rounded-3 gap-3">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img src="../img/icon 1.png" class="" width="200" alt="...">
                     </div>
-                    <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
-                        style="background-color: #ebe3d5;">
-                        <img src="../img/icon3.png" width="50" alt="">
-                        <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
+                    <div class="leads-text d-flex flex-column gap-3 justify-content-center">
+                        <h3 class="text-coklat fw-bold">Ingin menjual atau menyewakan properti anda?</h3>
+                        <h5 class="text-krem fw-bold">Tayangkan iklan hanya dengan beberapa langkah</h5>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="../userLeads/createLeads.php" class="btn btn-khusus" style="width: 180px;">Pasang
+                                iklan disini!</a>
+                            <a href="../userLeads/leadsPage.php" class="btn btn-login" style="width: 180px;">Lihat Iklan
+                                saya</a>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
-                    <div class="p-3 text-center" style="height: 75%;">
-                        <q>Aswa Website sangat membantu, saya jadi bisa menemukan rumah yag saya impikan dibekasi tanpa
-                            pusing untuk surver ke banyak tempat</q>
-                    </div>
-                    <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
-                        style="background-color: #ebe3d5;">
-                        <img src="../img/icon3.png" width="50" alt="">
-                        <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
-                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <!-- RATING USER END -->
+            <!-- RATING USER START -->
+            <div class="d-flex justify-content-center mb-3 mt-5 title">
+                <h1 class="text-coklat">Ulasan</h1>
+            </div>
+
+            <div class="d-flex justify-content-center mx-5 mb-5">
+                <div class="d-flex justify-content-center flex-wrap gap-5">
+                    <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
+                        <div class="p-3 text-center" style="height: 75%;">
+                            <q>Dengan adanya website aswa memudahkan saya untuk mencari tempat tinggal di daerah
+                                sekitar yang ingin saya tempati.</q>
+                        </div>
+                        <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
+                            style="background-color: #ebe3d5;">
+                            <img src="../img/icon3.png" width="50" alt="">
+                            <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
+                        <div class="p-3 text-center" style="height: 75%;">
+                            <q>Terimakasih aswa karena sudah memudahkan saya untuk mencari properti terbaik.</q>
+                        </div>
+                        <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
+                            style="background-color: #ebe3d5;">
+                            <img src="../img/icon3.png" width="50" alt="">
+                            <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column bg-white rounded-3 shadow-sm" style="width: 20rem;">
+                        <div class="p-3 text-center" style="height: 75%;">
+                            <q>Aswa Website sangat membantu, saya jadi bisa menemukan rumah yag saya impikan dibekasi
+                                tanpa
+                                pusing untuk surver ke banyak tempat</q>
+                        </div>
+                        <div class="d-flex align-items-center p-2 gap-4 p-2 rounded-bottom-3"
+                            style="background-color: #ebe3d5;">
+                            <img src="../img/icon3.png" width="50" alt="">
+                            <p class="fs-5 fw-medium text-coklat m-0">User Aswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RATING USER END -->
     </main>
 
     <footer class="container-fluid p-2 d-flex justify-content-around flex-wrap gap-5" style="background: #e6e6e6;">
@@ -300,18 +312,26 @@ $productCount = count($products);
 
         <div class="kontak d-flex flex-column gap-2 align-items-center text-abu" style="width: 20rem;">
             <h5 class="fw-bold">Kontak</h5>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/icon 7.png" alt="" width="30">
-                <span>089999999999</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
-            </div>
+            <ul style="list-style-type: none;" class="d-flex flex-column gap-2">
+            <li>
+                <div class="d-flex align-items-center gap-3">
+                    <img src="../img/icon 7.png" alt="" width="30">
+                    <a class="text-abu text-decoration-none" href="https://tel/+622189229653">021-89229653</a>
+                </div>
+            </li>
+            <li>
+                <div class="d-flex align-items-center gap-3">
+                    <img src="../img/whatsapp.svg" alt="" width="30">
+                    <a class="text-abu text-decoration-none" href="https://wa.me/083805320102">0838-0532-0102</a>
+                </div>
+            </li>
+            <li>
+                <div class="d-flex align-items-center gap-3">
+                    <img src="../img/whatsapp.svg" alt="" width="30">
+                    <a class="text-abu text-decoration-none" href="https://wa.me/0895324876803">0895-3248-76803</a>
+                </div>
+            </li>
+            </ul>
         </div>
     </footer>
 
@@ -325,7 +345,7 @@ $productCount = count($products);
     const adminP = document.getElementById("adminPage")
     const adminT = document.getElementById("adminTitle")
 
-    if(localStorage.getItem("Username") == "admin" && localStorage.getItem("Password") == "admin") {
+    if (localStorage.getItem("Username") == "admin" && localStorage.getItem("Password") == "admin") {
         adminL.style.display = "block"
         adminP.style.display = "block"
         adminT.style.display = "block"
