@@ -12,6 +12,7 @@ if (isset($_POST["submit"])) {
         echo "
         <script>
         alert('Iklan Gagal Diperbarui!')
+        location.href = 'adminLeadsPage.php'
         </script>
         ";
     }
@@ -102,20 +103,13 @@ $prop = query("SELECT * FROM properti WHERE id_properti = $id")[0];
 
     <main class="d-flex justify-content-center">
         <div class="container d-flex flex-column">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data"">
+                <input type="hidden" name="id_properti" value="<?= $prop["id_properti"] ?>">
+                <input type="hidden" name="gambarLama" value="<?= $prop["gambar"] ?>">
                 <div class="p-3 w-100 d-flex justify-content-center">
                     <input type="text" name="judul" id="judul" placeholder="Berikan Judul"
                         class="w-100 border-0 rounded-2 p-2" style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset"
                         value="<?= $prop["judul"] ?>">
-                </div>
-                <input type="hidden" name="id_properti" value="<?= $prop["id_properti"] ?>">
-                <div class=" d-flex flex-column mt-3 gap-2">
-                    <label for="lokasi">Ubah Lokasi</label>
-                    <div class="px-3 d-flex gap-3">
-                        <img src="../img/location.svg" alt="location-icon" width="30">
-                        <input type="text" name="lokasi" id="lokasi" class="w-100 border-0 rounded-2 p-2"
-                            style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["lokasi"] ?>">
-                    </div>
                 </div>
                 <div class="d-flex flex-column gap-2 mt-3">
                     <label for="telepon">Harga</label>
@@ -132,9 +126,30 @@ $prop = query("SELECT * FROM properti WHERE id_properti = $id")[0];
                             style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["harga"] ?>">
                     </div>
                 </div>
+                <div class="mt-3 d-flex flex-column gap-2">
+                    <label for="gambar">Tambahkan Gambar</label>
+                    <div class="border-0 d-flex mx-3 rounded-3 bg-white">
+                        <div id="bungkusus"
+                            class="w-100 overflow-hidden d-flex justify-content-center align-items-center rounded-3"
+                            style="height: 300px; box-shadow: 0 0 4px rgba(0,0,0, .25) inset">
+                            <img src="../img/uploadan/<?= $prop["gambar"] ?>" alt="image" style="width: 100%"
+                                id="preview">
+                            <input type="file" name="gambar" id="image-upload" accept="image/jpeg, image/png, image/jpg"
+                                style=" position: absolute; opacity: 0; z-index: 1;">
+                        </div>
+                    </div>
+                </div>
+                <div class=" d-flex flex-column mt-3 gap-2">
+                    <label for="lokasi">Ubah Lokasi</label>
+                    <div class="px-3 d-flex gap-3">
+                        <img src="../img/location.svg" alt="location-icon" width="30">
+                        <input type="text" name="lokasi" id="lokasi" class="w-100 border-0 rounded-2 p-2"
+                            style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["lokasi"] ?>">
+                    </div>
+                </div>
                 <div class="d-flex flex-column gap-2 mt-3">
                     <label for="kategori">Kategori</label>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex gap-3 ms-3">
                         <input type="radio" class="btn-check" name="id_kategori" id="option1" autocomplete="off" checked
                             value="111">
                         <label class="btn btn-login" for="option1">Subsidi</label>

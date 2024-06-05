@@ -30,33 +30,62 @@ function create($data)
     $kamar_mandi = htmlspecialchars($data['kamar_mandi']);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
 
-    $gambar = $_FILES['gambar']['name'];
-    $gambar_tmp = $_FILES['gambar']['tmp_name'];
-    $uploadDir = '../img/uploadan/'; // Direktori tujuan untuk menyimpan gambar
-    if (!file_exists($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
+    $gambar = uploadFile();
+    if (!$gambar) {
+        return false;
     }
-    $uploadFile = $uploadDir . basename($gambar);
 
-    if ($_FILES['gambar']['error'] !== UPLOAD_ERR_OK) {
-        echo "Terjadi kesalahan saat mengunggah gambar: " . $_FILES['gambar']['error'];
-        exit;
-    }
-    if (move_uploaded_file($gambar_tmp, $uploadFile)) {
-        $sql = "INSERT INTO properti_jual (id_jual, id_kategori, judul, no_telepon, harga, lokasi, kamar_tidur, kamar_mandi, gambar, deskripsi)
+    $sql = "INSERT INTO properti_jual (id_jual, id_kategori, judul, no_telepon, harga, lokasi, kamar_tidur, kamar_mandi, gambar, deskripsi)
                 VALUES ('', '$kategori', '$judul', '$telepon', '$harga', '$lokasi', '$kamar_tidur', '$kamar_mandi', '$gambar', '$deskripsi')";
-
-        mysqli_query($conn, $sql);
-        return mysqli_affected_rows($conn);
-    }
-    ;
+    mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
 }
 ;
+
+function uploadFile()
+{
+    global $conn;
+
+    $fileName = $_FILES['gambar']['name'];
+    $fileTmpName = $_FILES['gambar']['tmp_name'];
+    $fileSize = $_FILES['gambar']['size'];
+    $fileError = $_FILES['gambar']['error'];
+
+    if ($fileError === 4) {
+        echo "<script>
+                alert('Pilih gambar terlebih dahulu!');
+            </script>";
+        return false;
+    }
+
+    $fileExtensionValid = ['jpg', 'jpeg', 'png'];
+    $fileExtension = explode('.', $fileName);
+    $fileExtension = strtolower(end($fileExtension));
+
+    if (!in_array($fileExtension, $fileExtensionValid)) {
+        echo "<script>
+                alert('File yang diupload bukan gambar!');
+            </script>";
+        return false;
+    }
+
+    if ($fileSize > 3720000) {
+        echo "<script>
+                alert('Ukuran file terlalu besar!');
+            </script>";
+        return false;
+    }
+
+    $newFileName = uniqid();
+    $newFileName .= '.';
+    $newFileName .= $fileExtension;
+    move_uploaded_file($fileTmpName, '../img/uploadan/' . $newFileName);
+    return $newFileName;
+}
 
 function createAdmin($data)
 {
     global $conn;
-
     $judul = htmlspecialchars($data['judul']);
     $harga = htmlspecialchars($data['harga']);
     $lokasi = htmlspecialchars($data['lokasi']);
@@ -65,26 +94,15 @@ function createAdmin($data)
     $kamar_mandi = htmlspecialchars($data['kamar_mandi']);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
 
-    $gambar = $_FILES['gambar']['name'];
-    $gambar_tmp = $_FILES['gambar']['tmp_name'];
-    $uploadDir = '../img/uploadan/'; // Direktori tujuan untuk menyimpan gambar
-    if (!file_exists($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
+    $gambar = uploadFile();
+    if (!$gambar) {
+        return false;
     }
-    $uploadFile = $uploadDir . basename($gambar);
-
-    if ($_FILES['gambar']['error'] !== UPLOAD_ERR_OK) {
-        echo "Terjadi kesalahan saat mengunggah gambar: " . $_FILES['gambar']['error'];
-        exit;
-    }
-    if (move_uploaded_file($gambar_tmp, $uploadFile)) {
-        $sql = "INSERT INTO properti (id_properti, id_kategori, judul, harga, lokasi, kamar_tidur, kamar_mandi, gambar, deskripsi)
+    $sql = "INSERT INTO properti (id_properti, id_kategori, judul, harga, lokasi, kamar_tidur, kamar_mandi, gambar, deskripsi)
                 VALUES ('', '$kategori', '$judul', '$harga', '$lokasi', '$kamar_tidur', '$kamar_mandi', '$gambar', '$deskripsi')";
 
-        mysqli_query($conn, $sql);
-        return mysqli_affected_rows($conn);
-    }
-    ;
+    mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
 }
 ;
 // EDIT
@@ -100,11 +118,21 @@ function edit($datas)
     $kamar_tidur = htmlspecialchars($datas['kamar_tidur']);
     $kamar_mandi = htmlspecialchars($datas['kamar_mandi']);
     $deskripsi = htmlspecialchars($datas["deskripsi"]);
+    $gambarLama = htmlspecialchars($datas["gambarLama"]);
+    
+    $gambar = htmlspecialchars($datas["gambar"]);
+    if ($_FILES["gambar"]["error"] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = uploadFile();
+    }
 
-    $update = "UPDATE properti_jual SET id_kategori = '$kategori', judul = '$judul', no_telepon = '$telepon', harga = '$harga', lokasi = '$lokasi', kamar_tidur = '$kamar_tidur', kamar_mandi = '$kamar_mandi', deskripsi = '$deskripsi' WHERE id_jual = '$id' ";
+
+    $update = "UPDATE properti_jual SET id_kategori = '$kategori', judul = '$judul', no_telepon = '$telepon', harga = '$harga', lokasi = '$lokasi', kamar_tidur = '$kamar_tidur', kamar_mandi = '$kamar_mandi', gambar = '$gambar', deskripsi = '$deskripsi' WHERE id_jual = '$id' ";
     mysqli_query($conn, $update);
     return mysqli_affected_rows($conn);
 }
+
 function editAdmin($datas)
 {
     global $conn;
@@ -116,8 +144,17 @@ function editAdmin($datas)
     $kamar_tidur = htmlspecialchars($datas['kamar_tidur']);
     $kamar_mandi = htmlspecialchars($datas['kamar_mandi']);
     $deskripsi = htmlspecialchars($datas["deskripsi"]);
+    $gambarLama = htmlspecialchars($datas["gambarLama"]);
+    
+    $gambar = htmlspecialchars($datas["gambar"]);
+    if ($_FILES["gambar"]["error"] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = uploadFile();
+    }
 
-    $update = "UPDATE properti SET id_kategori = '$kategori', judul = '$judul', harga = '$harga', lokasi = '$lokasi', kamar_tidur = '$kamar_tidur', kamar_mandi = '$kamar_mandi', deskripsi = '$deskripsi' WHERE id_properti = '$id' ";
+
+    $update = "UPDATE properti SET id_kategori = '$kategori', judul = '$judul', harga = '$harga', lokasi = '$lokasi', kamar_tidur = '$kamar_tidur', kamar_mandi = '$kamar_mandi', gambar = '$gambar', deskripsi = '$deskripsi' WHERE id_properti = '$id' ";
     mysqli_query($conn, $update);
     return mysqli_affected_rows($conn);
 }
