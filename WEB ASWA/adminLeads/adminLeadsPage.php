@@ -49,7 +49,7 @@ $leads = query('SELECT * FROM properti');
                             <img src="../img/uploadan/<?= $lead["gambar"] ?>" alt="<?= $lead["gambar"] ?>"
                                 style="width: 100%; height: 100%; object-fit: cover">
                         </div>
-                        <div class="w-50">
+                        <div style="width: 40%;">
                             <p style="font-size: 40px; font-weight: 500; color: #776B5D" class="m-0"><?= $lead["judul"] ?></p>
                             <p style="color: #B0A695; font-size: 28px; font-weight: 500">Rp. <?= $harga ?></p>
                             <p style="font-size: 24px;"><?= $lead["lokasi"] ?></p>

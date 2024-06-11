@@ -197,3 +197,65 @@ function deleteAdminLeads($id)
     return mysqli_affected_rows($conn);
 }
 
+// REGISTER
+function register($user) {
+    global $conn;
+
+    $username = strtolower(stripcslashes($user["username"]));
+    $email = mysqli_escape_string($conn, trim($user["email"]));
+    $telepon = mysqli_escape_string($conn, trim($user["no_telepon"]));
+    $password = password_hash($user["password"], PASSWORD_DEFAULT);
+
+
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+    if(mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('Username sudah terdaftar!');
+            </script>";
+        return false;
+    }
+
+    if(empty($username) || empty($email) || empty($telepon) || empty($password)) {
+        echo "<script>
+                alert('Tolong lengkapi data anda!');
+            </script>";
+        return false;
+    }
+
+    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$email', '$password', '$telepon')");
+
+    return mysqli_affected_rows($conn);
+}
+
+// LOGIN
+function login($data) {
+    global $conn;
+
+    $username = mysqli_real_escape_string($conn, trim($data['username']));
+    $password = $data['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['password'])) {
+            // Login successful
+            session_start();
+            $_SESSION['user_id'] = $row['id_user'];
+            $_SESSION['username'] = $row['username'];
+            return true;
+        } else {
+            // Incorrect password
+            echo "<script>
+                    alert('Password salah!');
+                </script>";
+            return false;
+        }
+    } else {
+        // User not found
+        echo "<script>
+                alert('Username tidak ditemukan!');
+            </script>";
+        return false;
+    }
+}

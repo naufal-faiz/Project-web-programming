@@ -95,10 +95,10 @@ $productCount = count($products);
                             </path>
                         </svg>
                     </button>
-                    <a class="btn btn-login" href="login.html" style="width:100px;" id="login">
+                    <a class="btn btn-login" href="login.php" style="width:100px;" id="login">
                         Login
                     </a>
-                    <a class="btn btn-login" href="register.html" style="width: 100px" id="register">
+                    <a class="btn btn-login" href="register.php" style="width: 100px" id="register">
                         Register
                     </a>
                 </div>
@@ -317,57 +317,6 @@ $productCount = count($products);
 
 </body>
 <script>
-    const logOutBtn = document.getElementById("logOutBtn")
-    const login = document.getElementById("login")
-    const register = document.getElementById("register")
-    const username = document.getElementById("username")
-    const adminL = document.getElementById("adminLeads")
-    const adminP = document.getElementById("adminPage")
-    const adminT = document.getElementById("adminTitle")
-
-    if(localStorage.getItem("Username") == "admin" && localStorage.getItem("Password") == "admin") {
-        adminL.style.display = "block"
-        adminP.style.display = "block"
-        adminT.style.display = "block"
-    } else {
-        adminL.style.display = "none"
-        adminP.style.display = "none"
-        adminT.style.display = "none"
-    }
-
-    username.style.display = "none"
-    logOutBtn.style.display = "none"
-
-    if (localStorage.getItem("Username")) {
-        login.style.display = "none"
-        register.style.display = "none"
-        username.style.display = "block"
-
-        username.innerText = localStorage.getItem("Username")
-    } else {
-        login.style.display = "block"
-        register.style.display = "block"
-        username.style.display = "none"
-    }
-
-    username.addEventListener('click', () => {
-        logOutBtn.style.display = "block"
-        setInterval(() => {
-            logOutBtn.style.display = "none"
-        }, 5000)
-    })
-
-    logOutBtn.addEventListener('click', () => {
-        localStorage.removeItem("Username")
-        localStorage.removeItem("Email")
-        localStorage.removeItem("Password")
-        localStorage.removeItem("Telepon")
-        location.reload()
-        login.style.display = "block"
-        register.style.display = "block"
-        logOutBtn.style.display = "none"
-        username.style.display = "none"
-    })
 </script>
 
 </html>
