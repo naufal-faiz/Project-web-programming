@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION["login"])) {
+    header("Location: index.php");
+    exit;
+}
 require '../feature/function.php';
 if (isset($_POST['login'])) {
     $user_data = $_POST['user_data'];
@@ -8,12 +13,15 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
+            $_SESSION['login'] = $row["username"];
             header("Location: index.php");
             exit;
         }
     }
     $error = true;
 }
+// ... (database connection code)
+
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +111,7 @@ if (isset($_POST['login'])) {
             <p>Belum memiliki akun? Buat <a href="register.php">disini</a></p>
         </div>
         <?php if (isset($error)) : ?>
-            <p style="color: red; font-style: italic;">Username Tidak ditemukan, pastikan anda mengisi dengan benar!</p>
+            <p id="error-message" style="color: red; font-style: italic;">Username Tidak ditemukan, pastikan anda mengisi dengan benar!</p>
         <?php endif; ?>
     </div>
 
@@ -114,6 +122,14 @@ if (isset($_POST['login'])) {
             window.history.back()
         })
 
+        const errorMessage = document.getElementById("error-message");
+
+        // If the error message exists, hide it after 1 second
+        if (errorMessage) {
+            setTimeout(() => {
+                errorMessage.style.display = "none";
+            }, 1000);
+        }
     </script>
 </body>
 

@@ -1,6 +1,21 @@
 <?php
+session_start();
 require '../feature/function.php';
 $products = query("SELECT * FROM properti");
+$username = '';
+
+// Check if the user is logged in
+if (isset($_SESSION["login"])) {
+    // Fetch the logged-in user's data
+    $username = $_SESSION["login"];
+    $userResult = query("SELECT username FROM user WHERE username = '" . $username . "'");
+    
+    // Check if user exists and fetch the username
+    if (!empty($userResult)) {
+        $user = $userResult[0];
+        $username = $user["username"];
+    }
+}
 $productCount = count($products);
 ?>
 
@@ -9,7 +24,7 @@ $productCount = count($products);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aswa Mandiri - Temukan Hunian Anda</title>
     <link rel="stylesheet" href="../style/bootstrap.min.css">
@@ -86,27 +101,31 @@ $productCount = count($products);
                     </div>
                 </div>
                 <div class="d-flex gap-2 right-0">
+                    <?php if(isset($_SESSION["login"])) : ?>
                     <span id="username" class="text-coklat rounded-3"
-                        style="background-color: #EBE3D5; padding: 8px; cursor: pointer;"></span>
-                    <button class="logout-c rounded-3 mt-2 btn btn-login" id="logOutBtn">
+                        style="background-color: #EBE3D5; padding: 8px; cursor: pointer;"><?= $username ?></span>
+                    <a href="logout.php" class="logout-c rounded-3 mt-2 btn btn-login" id="logOutBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="logout" width="20">
                             <path fill="#776B5D"
                                 d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z">
                             </path>
                         </svg>
-                    </button>
+                    </a>
+                    <?php else : ?>
                     <a class="btn btn-login" href="login.php" style="width:100px;" id="login">
                         Login
                     </a>
                     <a class="btn btn-login" href="register.php" style="width: 100px" id="register">
                         Register
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
     </header>
 
     <main>
+        <?php if($username === "admin") : ?>
         <div class="d-flex justify-content-center flex-column align-items-center pt-5">
             <h1 class="text-coklat" id="adminTitle">Hai Admin, Selamat Datang!</h1>
             <div class="d-flex gap-3 mt-3">
@@ -114,6 +133,7 @@ $productCount = count($products);
                 <a class="btn btn-login" aria-current="page" id="adminPage" href="../adminLeads/adminLeadsPage.php">Lihat halaman iklan</a>
             </div>
         </div>
+        <?php endif; ?>
         <!-- CAROUSEL START -->
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide mx-5 my-3 shadow rounded-5"
@@ -216,8 +236,16 @@ $productCount = count($products);
                     <h3 class="text-coklat fw-bold">Ingin menjual atau menyewakan properti anda?</h3>
                     <h5 class="text-krem fw-bold">Tayangkan iklan hanya dengan beberapa langkah</h5>
                     <div class="d-flex gap-3 flex-wrap">
-                        <a href="../userLeads/createLeads.php" class="btn btn-khusus" style="width: 180px;">Pasang iklan disini!</a>
-                        <a href="../userLeads/leadsPage.php" class="btn btn-login" style="width: 180px;">Lihat Iklan saya</a>
+                        <a href="<?php if(!isset($_SESSION["login"])) {
+                            echo "login.php";
+                        } else {
+                            echo "../userLeads/createLeads.php";
+                        } ?>" class="btn btn-khusus" style="width: 180px;">Pasang iklan disini!</a>
+                        <a href="<?php if(!isset($_SESSION["login"])) {
+                            echo "login.php";
+                        } else {
+                            echo "../userLeads/leadsPage.php";
+                        } ?>" class="btn btn-login" style="width: 180px;">Lihat Iklan saya</a>
                     </div>
                 </div>
 

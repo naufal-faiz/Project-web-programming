@@ -1,9 +1,15 @@
 <?php
-    require '../feature/function.php';
-    $id = $_GET["id_properti"];
-    $properti = query("SELECT * FROM properti WHERE id_properti = '$id'")[0];
-    $harga = number_format($properti["harga"], 0, ',')
-?>
+session_start();
+// Cek apakah user sudah login atau belum
+if ($_SESSION["login"] !== "admin") {
+    header("Location: ../Landing Page/index.php");
+    exit;
+}
+require '../feature/function.php';
+$id = $_GET["id_properti"];
+$properti = query("SELECT * FROM properti WHERE id_properti = '$id'")[0];
+$harga = number_format($properti["harga"], 0, ',')
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +42,8 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-center gap-1 mt-4">
                 <div style="width: 100%; z-index: 19;" class="rounded-2 border-khusus">
-                    <img src="../img/uploadan/<?= $properti["gambar"] ?>" class="w-100 rounded-2" height="700" alt="<?= $properti["gambar"] ?>">
+                    <img src="../img/uploadan/<?= $properti["gambar"] ?>" class="w-100 rounded-2" height="700"
+                        alt="<?= $properti["gambar"] ?>">
                 </div>
             </div>
 
@@ -66,7 +73,7 @@
             <div class="keterangan mt-4 d-flex flex-column gap-2">
                 <h3 class="text-coklat">Keterangan</h3>
                 <p class="fw-light">
-                <?= $properti["deskripsi"] ?>
+                    <?= $properti["deskripsi"] ?>
                 </p>
             </div>
             <div class="container-fluid position-sticky" style="background-color: #F8F7F4; bottom: 0; padding: 1px;">
@@ -90,4 +97,5 @@
         })
     </script>
 </body>
+
 </html>
