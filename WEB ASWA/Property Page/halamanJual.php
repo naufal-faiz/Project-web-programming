@@ -1,7 +1,14 @@
 <?php
     require '../feature/function.php';
     $id = $_GET["id_jual"];
-    $properti = query("SELECT * FROM properti_jual WHERE id_jual = '$id'")[0];
+    $properties = query("SELECT * FROM properti_jual WHERE id_jual = '$id'");
+
+    if(count($properties) === 0) {
+        header('Location: ../Landing Page/index.php');
+        exit;
+    }
+
+    $properti = $properties[0];
     $harga = number_format($properti["harga"], 0, ',')
 ?>
 

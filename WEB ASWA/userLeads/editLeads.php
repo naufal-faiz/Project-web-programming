@@ -25,7 +25,15 @@ if (isset($_POST["submit"])) {
 }
 
 $id = $_GET["id_jual"];
-$prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
+
+$properties = query("SELECT * FROM properti_jual WHERE id_jual = '$id'");
+
+if(count($properties) === 0) {
+    header('Location: leadsPage.php');
+    exit;
+}
+
+$properti = $properties[0];
 ?>
 
 <!DOCTYPE html>
@@ -112,10 +120,10 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
                     <div class=" p-3 w-100 d-flex justify-content-center">
                 <input type="text" name="judul" id="judul" placeholder="Berikan Judul"
                     class="w-100 border-0 rounded-2 p-2" style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset"
-                    value="<?= $prop["judul"] ?>">
+                    value="<?= $properti["judul"] ?>">
         </div>
-        <input type="hidden" name="id_jual" value="<?= $prop["id_jual"] ?>">
-        <input type="hidden" name="gambarLama" value="<?= $prop["gambar"] ?>">
+        <input type="hidden" name="id_jual" value="<?= $properti["id_jual"] ?>">
+        <input type="hidden" name="gambarLama" value="<?= $properti["gambar"] ?>">
         <div class="d-flex flex-column gap-2">
             <label for="telepon">Telepon</label>
             <div class="container d-flex gap-3 px-3">
@@ -128,7 +136,7 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
                     <option value="+84">VNM +84</option>
                 </select>
                 <input type="text" name="no_telepon" id="telepon" class="w-100 border-0 rounded-2 p-2"
-                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["no_telepon"] ?>">
+                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $properti["no_telepon"] ?>">
             </div>
         </div>
         <div class="mt-3 d-flex flex-column gap-2">
@@ -137,7 +145,7 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
                 <div id="bungkusus"
                     class="w-100 overflow-hidden d-flex justify-content-center align-items-center rounded-3"
                     style="height: 300px; box-shadow: 0 0 4px rgba(0,0,0, .25) inset">
-                    <img src="../img/uploadan/<?= $prop["gambar"] ?>" alt="image" style="width: 100%" id="preview">
+                    <img src="../img/uploadan/<?= $properti["gambar"] ?>" alt="image" style="width: 100%" id="preview">
                     <input type="file" name="gambar" id="image-upload" accept="image/jpeg, image/png, image/jpg"
                         style=" position: absolute; opacity: 0; z-index: 1;">
                 </div>
@@ -148,7 +156,7 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
             <div class="px-3 d-flex gap-3">
                 <img src="../img/location.svg" alt="location-icon" width="30">
                 <input type="text" name="lokasi" id="lokasi" class="w-100 border-0 rounded-2 p-2"
-                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["lokasi"] ?>">
+                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $properti["lokasi"] ?>">
             </div>
         </div>
         <div class="d-flex flex-column gap-2 mt-3">
@@ -163,7 +171,7 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
                     <option value="Vietnam">VND</option>
                 </select>
                 <input type="text" name="harga" id="telepon" class="w-100 border-0 rounded-2 p-2"
-                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $prop["harga"] ?>">
+                    style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset" value="<?= $properti["harga"] ?>">
             </div>
         </div>
         <div class="d-flex flex-column gap-2 mt-3">
@@ -183,7 +191,7 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
             <div class="d-flex gap-4 px-3">
                 <input type="number" name="kamar_tidur" id="kamar_tidur" class="border-0 rounded-2 p-2"
                     style="width: 50px; box-shadow: 0 0 4px rgba(0,0,0, .25) inset" max="20" min="1"
-                    value="<?= $prop["kamar_tidur"] ?>">
+                    value="<?= $properti["kamar_tidur"] ?>">
             </div>
         </div>
         <div class="mt-3 d-flex flex-column gap-2">
@@ -191,13 +199,13 @@ $prop = query("SELECT * FROM properti_jual WHERE id_jual = $id")[0];
             <div class="d-flex gap-4 px-3">
                 <input type="number" name="kamar_mandi" id="kamar_mandi" class="border-0 rounded-2 p-2"
                     style="width: 50px; box-shadow: 0 0 4px rgba(0,0,0, .25) inset" max="20" min="1"
-                    value="<?= $prop["kamar_mandi"] ?>">
+                    value="<?= $properti["kamar_mandi"] ?>">
             </div>
         </div>
         <div class="mt-3 d-flex flex-column gap-2">
             <label for="deskripsi">Ubah Keterangan</label>
             <textarea name="deskripsi" id="deskripsi" class="w-100 border-0 rounded-2 p-2"
-                style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset"><?= $prop["deskripsi"] ?></textarea>
+                style="box-shadow: 0 0 4px rgba(0,0,0, .25) inset"><?= $properti["deskripsi"] ?></textarea>
         </div>
         <div class="mt-3 mb-3 d-flex flex-column gap-2">
             <button class="btn btn-khusus" type="submit" name="submit" onclick="send()"

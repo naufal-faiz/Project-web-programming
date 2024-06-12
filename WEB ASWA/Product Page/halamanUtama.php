@@ -29,7 +29,7 @@ $property = query("SELECT * FROM properti");
     </header>
 
     <?php if (empty($properties) && empty($property)): ?>
-        <main style="height: 100vh;">
+        <main>
             <div class="d-flex text-center align-items-center justify-content-center" style="height: 70vh">
                 <h1 class="text-abu opacity-25">Belum ada tawaran menarik hari ini 😔</h1>
             </div>
@@ -96,7 +96,7 @@ $property = query("SELECT * FROM properti");
             <?php endif ?>
         </main>
 
-        <footer class="container-fluid p-2 d-flex justify-content-around flex-wrap gap-5 mt-3 position-fixed"
+        <footer class="container-fluid p-2 d-flex justify-content-around flex-wrap gap-5"
             style="background: #e6e6e6; bottom: 0;">
             <div class="social-media d-flex flex-column gap-2 align-items-center" style="width: 20rem">
                 <h5 class="fw-bold text-abu">Social Media</h5>

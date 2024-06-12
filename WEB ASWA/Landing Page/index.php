@@ -181,7 +181,7 @@ $productCount = count($products);
             <h1 class="text-coklat">Penawaran Terbaik Kami</h1>
         </div>
         <?php if($productCount > 3) : ?>
-        <div class="d-flex gap-3 text-center overflow-x-auto justify-content-start">
+        <div class="d-flex gap-3 text-center overflow-x-auto justify-content-start ms-5">
         <?php else : ?>
         <div class="d-flex gap-3 text-center overflow-x-auto justify-content-center">
         <?php endif ?>
