@@ -1,10 +1,10 @@
 <?php
-    require '../feature/function.php';
+    require '../function.php';
     $id = $_GET["id_jual"];
     $properties = query("SELECT * FROM properti_jual WHERE id_jual = '$id'");
 
     if(count($properties) === 0) {
-        header('Location: ../Landing Page/index.php');
+        header('Location: ../');
         exit;
     }
 
@@ -43,7 +43,7 @@
         <div class="container">
         <div class="d-flex align-items-center justify-content-center gap-1 mt-4">
                 <div style="width: 100%; z-index: 19;" class="rounded-2 border-khusus">
-                    <img src="../img/uploadan/<?= $properti["gambar"] ?>" class="w-100 rounded-2" height="700" alt="<?= $properti["gambar"] ?>">
+                    <img src="../uploadan/<?= $properti["gambar"] ?>" class="w-100 rounded-2" height="700" alt="<?= $properti["gambar"] ?>">
                 </div>
             </div>
 

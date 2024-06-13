@@ -2,10 +2,10 @@
 session_start();
 // Cek apakah user sudah login atau belum
 if(!isset($_SESSION["login"])) {
-    header("Location: ../Landing Page/index.php");
+    header("Location: ../");
     exit;
 }
-require '../feature/function.php';
+require '../function.php';
 $leads = query('SELECT * FROM properti_jual');
 ?>
 
@@ -52,7 +52,7 @@ $leads = query('SELECT * FROM properti_jual');
                     <div class="card p-3 rounded-4 d-flex flex-row gap-5 flex-wrap">
                         <div style="max-width: 530px; max-height: 300px; border: 2px solid black; overflow: hidden"
                             class="rounded-4">
-                            <img src="../img/uploadan/<?= $lead["gambar"] ?>" alt="<?= $lead["gambar"] ?>"
+                            <img src="../uploadan/<?= $lead["gambar"] ?>" alt="<?= $lead["gambar"] ?>"
                                 style="width: 100%; height: 100%; object-fit: cover">
                         </div>
                         <div style="width: 40%;">

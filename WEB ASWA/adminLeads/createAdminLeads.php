@@ -2,10 +2,10 @@
 session_start();
 // Cek apakah user sudah login atau belum
 if($_SESSION["login"] !== "admin") {
-    header("Location: ../Landing Page/index.php");
+    header("Location: ../");
     exit;
 }
-require '../feature/function.php';
+require '../function.php';
 
 if (isset($_POST["submit"])) {
     if (createAdmin($_POST) > 0) {

@@ -1,5 +1,5 @@
 <?php
-require '../feature/function.php';
+require '../function.php';
 $properties = query("SELECT * FROM properti_jual WHERE id_kategori = 113");
 $property = query("SELECT * FROM properti WHERE id_kategori = 113");
 ?>
@@ -30,18 +30,18 @@ $property = query("SELECT * FROM properti WHERE id_kategori = 113");
 
     <?php if (empty($properties) && empty($property)): ?>
         <main>
-            <div class="d-flex text-center align-items-center justify-content-center" style="height: 70vh">
+            <div class="d-flex text-center align-items-center justify-content-center" style="height: 100vh">
                 <h1 class="text-abu opacity-25">Belum ada tawaran menarik hari ini 😔</h1>
             </div>
         <?php else: ?>
-            <main style="margin-bottom: 205px">
+            <main style="margin-bottom: 20px">
                 <?php foreach ($properties as $properti): ?>
                     <?php $harga = number_format($properti["harga"], 0, ',') ?>
                     <div class="px-5 mt-3">
                         <div class="card p-3 rounded-4 d-flex flex-row gap-5 flex-wrap">
                             <div style="max-width: 530px; max-height: 300px; border: 2px solid black; overflow: hidden"
                                 class="rounded-4">
-                                <img src="../img/uploadan/<?= $properti["gambar"] ?>" alt="<?= $properti["gambar"] ?>"
+                                <img src="../uploadan/<?= $properti["gambar"] ?>" alt="<?= $properti["gambar"] ?>"
                                     style="width: 100%; height: 100%; object-fit: cover">
                             </div>
                             <div class="w-50">
@@ -70,7 +70,7 @@ $property = query("SELECT * FROM properti WHERE id_kategori = 113");
                         <div class="card p-3 rounded-4 d-flex flex-row gap-5 flex-wrap">
                             <div style="max-width: 530px; max-height: 300px; border: 2px solid black; overflow: hidden"
                                 class="rounded-4">
-                                <img src="../img/uploadan/<?= $prop["gambar"] ?>" alt="<?= $prop["gambar"] ?>"
+                                <img src="../uploadan/<?= $prop["gambar"] ?>" alt="<?= $prop["gambar"] ?>"
                                     style="width: 100%; height: 100%; object-fit: cover">
                             </div>
                             <div class="w-50">
@@ -95,56 +95,6 @@ $property = query("SELECT * FROM properti WHERE id_kategori = 113");
                 <?php endforeach; ?>
             <?php endif ?>
         </main>
-
-        <footer class="container-fluid p-2 d-flex justify-content-around flex-wrap gap-5"
-            style="background: #e6e6e6; bottom: 0;">
-            <div class="social-media d-flex flex-column gap-2 align-items-center" style="width: 20rem">
-                <h5 class="fw-bold text-abu">Social Media</h5>
-                <div class="d-flex gap-3">
-                    <a href="https://instagram.com/_tuyy68">
-                        <img src="../img/icon 4.png" class="me-2" alt="" width="30">
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=100093661991910&mibextid=ZbWKwL">
-                        <img src="../img/icon 5.png" class="me-2" alt="" width="30">
-                    </a>
-                    <a href="https://www.tiktok.com/@gunturprakoso359?_t=8maBjJB9ZmD&_r=1">
-                        <img src="../img/icon 6.png" class="me-2" alt="" width="30">
-                    </a>
-                </div>
-            </div>
-
-            <div class="tentang d-flex flex-column gap-2 align-items-center text-abu" style="width: 20rem">
-                <h5 class="fw-bold">Tentang</h5>
-                <ul style="list-style-type: none;" class="d-flex flex-column gap-2">
-                    <li><a class="text-abu" style="text-decoration: none;" href="../footer/s&k.html">Syarat &
-                            Ketentuan</a>
-                    </li>
-                    <li><a class="text-abu" style="text-decoration: none;" href="../footer/kebijakan.html">Kebijakan
-                            Privasi</a></li>
-                    <li><a class="text-abu" style="text-decoration: none;" href="../footer/tentang.html">Tentang
-                            Kami</a>
-                    </li>
-                    <li><a class="text-abu" style="text-decoration: none;" href="../footer/hakCipta.html">Hak Cipta</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="kontak d-flex flex-column gap-2 align-items-center text-abu" style="width: 20rem;">
-                <h5 class="fw-bold">Kontak</h5>
-                <div class="d-flex align-items-center gap-3">
-                    <img src="../img/icon 7.png" alt="" width="30">
-                    <span>089999999999</span>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                    <img src="../img/whatsapp.svg" alt="" width="30">
-                    <span>089999999999</span>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                    <img src="../img/whatsapp.svg" alt="" width="30">
-                    <span>089999999999</span>
-                </div>
-            </div>
-        </footer>
         <script>
             const backButton = document.getElementById("backButton");
 

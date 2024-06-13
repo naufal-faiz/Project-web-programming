@@ -2,10 +2,10 @@
 session_start();
 // Cek apakah user sudah login atau belum
 if($_SESSION["login"] !== "admin") {
-    header("Location: ../Landing Page/index.php");
+    header("Location: ../");
     exit;
 }
-require '../feature/function.php';
+require '../function.php';
 
 $id = $_GET["id_properti"];
 

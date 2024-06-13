@@ -2,10 +2,10 @@
 session_start();
 // Cek apakah user sudah login atau belum
 if(!isset($_SESSION["login"])) {
-    header("Location: ../Landing Page/index.php");
+    header("Location: ../");
     exit;
 }
-require '../feature/function.php';
+require '../function.php';
 if (isset($_POST["submit"])) {
     if (edit($_POST) > 0) {
         echo "
@@ -145,7 +145,7 @@ $properti = $properties[0];
                 <div id="bungkusus"
                     class="w-100 overflow-hidden d-flex justify-content-center align-items-center rounded-3"
                     style="height: 300px; box-shadow: 0 0 4px rgba(0,0,0, .25) inset">
-                    <img src="../img/uploadan/<?= $properti["gambar"] ?>" alt="image" style="width: 100%" id="preview">
+                    <img src="../uploadan/<?= $properti["gambar"] ?>" alt="image" style="width: 100%" id="preview">
                     <input type="file" name="gambar" id="image-upload" accept="image/jpeg, image/png, image/jpg"
                         style=" position: absolute; opacity: 0; z-index: 1;">
                 </div>
