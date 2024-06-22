@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Cek apakah user sudah login atau belum
-if($_SESSION["login"] !== "admin") {
+if($_SESSION["username"] !== "Aswa Administrator") {
     header("Location: ../");
     exit;
 }
@@ -82,51 +82,6 @@ $leads = query('SELECT * FROM properti');
         <?php endif ?>
     </main>
 
-    <footer class="container-fluid p-2 d-flex justify-content-around flex-wrap gap-5 mt-3 position-relative" style="background: #e6e6e6; bottom: 0;">
-        <div class="social-media d-flex flex-column gap-2 align-items-center" style="width: 20rem">
-            <h5 class="fw-bold text-abu">Social Media</h5>
-            <div class="d-flex gap-3">
-                <a href="https://instagram.com/_tuyy68">
-                    <img src="../img/icon 4.png" class="me-2" alt="" width="30">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=100093661991910&mibextid=ZbWKwL">
-                    <img src="../img/icon 5.png" class="me-2" alt="" width="30">
-                </a>
-                <a href="https://www.tiktok.com/@gunturprakoso359?_t=8maBjJB9ZmD&_r=1">
-                    <img src="../img/icon 6.png" class="me-2" alt="" width="30">
-                </a>
-            </div>
-        </div>
-
-        <div class="tentang d-flex flex-column gap-2 align-items-center text-abu" style="width: 20rem">
-            <h5 class="fw-bold">Tentang</h5>
-            <ul style="list-style-type: none;" class="d-flex flex-column gap-2">
-                <li><a class="text-abu" style="text-decoration: none;" href="../footer/s&k.html">Syarat & Ketentuan</a>
-                </li>
-                <li><a class="text-abu" style="text-decoration: none;" href="../footer/kebijakan.html">Kebijakan
-                        Privasi</a></li>
-                <li><a class="text-abu" style="text-decoration: none;" href="../footer/tentang.html">Tentang Kami</a>
-                </li>
-                <li><a class="text-abu" style="text-decoration: none;" href="../footer/hakCipta.html">Hak Cipta</a></li>
-            </ul>
-        </div>
-
-        <div class="kontak d-flex flex-column gap-2 align-items-center text-abu" style="width: 20rem;">
-            <h5 class="fw-bold">Kontak</h5>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/icon 7.png" alt="" width="30">
-                <span>089999999999</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
-            </div>
-        </div>
-    </footer>
     <script>
         const backButton = document.getElementById("backButton");
 

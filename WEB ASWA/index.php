@@ -132,7 +132,7 @@ $username = $_SESSION['username'];
     </header>
 
     <main>
-        <?php if($username === "admin") : ?>
+        <?php if($username === "Aswa Administrator") : ?>
         <div class="d-flex justify-content-center flex-column align-items-center pt-5">
             <h1 class="text-coklat" id="adminTitle">Hai Admin, Selamat Datang!</h1>
             <div class="d-flex gap-3 mt-3">
@@ -152,20 +152,36 @@ $username = $_SESSION['username'];
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
                 </div>
                 <div class="carousel-inner rounded-5">
                     <div class="carousel-item active">
-                        <img src="img/Gambar1.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="img/carousel1.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/Gambar2.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="img/carousel2.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/Gambar3.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                        <img src="img/carousel3.png" class="d-block w-100" alt="Aswa Carousel" height="500"
                             width="600">
                     </div>
+                    <div class="carousel-item">
+                        <img src="img/carousel4.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                            width="600">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/carousel5.png" class="d-block w-100" alt="Aswa Carousel" height="500"
+                            width="600">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/carousel6.jpg" class="d-block w-100" alt="Aswa Carousel" height="500"
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
@@ -220,15 +236,16 @@ $username = $_SESSION['username'];
         <div class="d-flex justify-content-center overflow-x-auto" style="gap: 140px">
             <img src="img/JID2021005924.jpg" alt="" class="rounded-circle shadow-sm" width="75
             ">
-            <img src="img/Suropati-logo.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+
+            <img src="img/Gambar5.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
             ">
-            <img src="img/Gambar9.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            <img src="img/Gambar4.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
+            ">
+            <img src="img/Suropati-logo.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
             ">
             <img src="img/images.jpg" alt="" class="rounded-circle shadow-sm bg-white" width="75
             ">
             <img src="img/Gambar10.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
-            ">
-            <img src="img/Gambar8.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
             ">
         </div>
         <!-- SPONSOR END -->
@@ -337,15 +354,15 @@ $username = $_SESSION['username'];
             <h5 class="fw-bold">Kontak</h5>
             <div class="d-flex align-items-center gap-3">
                 <img src="img/icon 7.png" alt="" width="30">
-                <span>089999999999</span>
+                <span>021-89229653 ( Office )</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <img src="img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
+                <span>0838-0532-0102 ( Guntur )</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <img src="img/whatsapp.svg" alt="" width="30">
-                <span>089999999999</span>
+                <span>0895-3248-76803 ( Putra )</span>
             </div>
         </div>
     </footer>
