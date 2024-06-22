@@ -182,8 +182,6 @@ $username = $_SESSION['username'];
                     </div>
                     <div class="carousel-item">
                         <img src="img/carousel6.jpg" class="d-block w-100" alt="Aswa Carousel" height="500"
-                            width="600">
-                    </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
@@ -238,6 +236,7 @@ $username = $_SESSION['username'];
         <div class="d-flex justify-content-center overflow-x-auto" style="gap: 140px">
             <img src="img/JID2021005924.jpg" alt="" class="rounded-circle shadow-sm" width="75
             ">
+
             <img src="img/Gambar5.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
             ">
             <img src="img/Gambar4.png" alt="" class="rounded-circle shadow-sm bg-white" width="75
